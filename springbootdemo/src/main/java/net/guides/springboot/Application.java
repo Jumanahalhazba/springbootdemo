@@ -1,4 +1,4 @@
-package net.guides.springboot.crud;
+package net.guides.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

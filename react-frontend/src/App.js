@@ -6,7 +6,9 @@ import ListEmployeeComponent from './components/ListEmployeeComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
+import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
 import ViewEmployeeComponent from './components/ViewEmployeeComponent';
+import Layout from './components/layout/layout.component';
 
 function App() {
   return (
@@ -14,18 +16,20 @@ function App() {
         <Router>
               <HeaderComponent />
                 <div className="container">
-                    <Routes>
+                <Routes>
                           <Route path = "/" exact component = {ListEmployeeComponent}></Route>
                           <Route path = "/employees" component = {ListEmployeeComponent}></Route>
                           <Route path = "/add-employee/:id" component = {CreateEmployeeComponent}></Route>
                           <Route path = "/view-employee/:id" component = {ViewEmployeeComponent}></Route>
                           {/* <Route path = "/update-employee/:id" component = {UpdateEmployeeComponent}></Route> */}
-                    </Routes>
+                </Routes>
                 </div>
               <FooterComponent />
         </Router>
     </div>
   );
 }
+
+
 
 export default App;

@@ -23,15 +23,19 @@ import net.guides.springboot.crud.model.Employee;
 import net.guides.springboot.crud.repository.EmployeeRepository;
 import net.guides.springboot.crud.service.SequenceGeneratorService;
 
-//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "*")
 public class EmployeeController {
+
     @Autowired
     private EmployeeRepository employeeRepository;
 
     @Autowired
     private SequenceGeneratorService sequenceGeneratorService;
+
+    @GetMapping("/login")
+    public String login(){return "Success";}
 
     @GetMapping("/employees")
     public List < Employee > getAllEmployees() {
@@ -44,9 +48,10 @@ public class EmployeeController {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
         return ResponseEntity.ok().body(employee);
     }
-
+    @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
     @PostMapping("/employees")
     public Employee createEmployee(@Valid @RequestBody Employee employee) {
+        System.out.println((employee));
         employee.setId(sequenceGeneratorService.generateSequence(Employee.SEQUENCE_NAME));
         return employeeRepository.save(employee);
     }
